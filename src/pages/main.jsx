@@ -1,8 +1,6 @@
 import '@mantine/core/styles.css';
 
 import { IconSearch } from '@tabler/icons-react';
-
-
 import {  AppShell,  Group, TextInput, rem,  Card, Image, Text, Stack } from '@mantine/core';
 import { useState } from 'react';
 import TextEditor from '../components/TextEditor';

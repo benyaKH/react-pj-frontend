@@ -13,6 +13,7 @@ import CategoryPage from './pages/category';
 import EpisodePage from './pages/episodepage';
 import { useState } from 'react';
 import LoginPage from './pages/loginpage';
+import { googleLogout } from '@react-oauth/google';
 
 function App() {
   
@@ -24,6 +25,12 @@ function App() {
   const [name] = useState(() => {
     return localStorage.getItem('username')
   })
+
+  const logOut = () => {
+    googleLogout();
+    localStorage.removeItem("username")
+    window.location.replace(`/`)
+};
 
   return (
     <MantineProvider
@@ -95,6 +102,9 @@ function App() {
                     <div>
                       <Menu.Item component="a" href="/Dashboard" color='white'>
                         veiw profile
+                      </Menu.Item>
+                      <Menu.Item component="a" onClick={logOut} color='white'>
+                        log out
                       </Menu.Item>
 
                       {/* <GoogleLogout
