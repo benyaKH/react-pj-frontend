@@ -102,6 +102,22 @@ export default function TableSection(props) {
 
     // const Rqtags =  [...new Set(array.map((item) => item.age))];
 
+    const downloadfile = () =>{
+        fetch("template.xlsx").then((response) => {
+            response.blob().then((blob) => {
+             
+                // Creating new object of PDF file
+                const fileURL =
+                    window.URL.createObjectURL(blob);
+                     
+                // Setting various property values
+                let alink = document.createElement("a");
+                alink.href = fileURL;
+                alink.download = "template.xlsx";
+                alink.click();
+            });
+        });
+    }
 
 
 
@@ -173,6 +189,7 @@ export default function TableSection(props) {
                                     </form> :
                                     <div>
                                         <Stack py="lg">
+                                            <Button onClick={downloadfile}>Download Template</Button>
                                             <input
                                                 type="file"
                                                 accept=".xlsx, .xls"
