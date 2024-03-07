@@ -146,7 +146,6 @@ function App() {
           <Route path='/Dashborad/Episode/:id' element={<EpisodePage isAdmin={true} />}></Route>
           <Route path='/Episode/:id' element={<EpisodePage isAdmin={false} />}></Route>
         </Routes>
-
       </AppShell>
     </MantineProvider>
   )

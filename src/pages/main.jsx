@@ -5,6 +5,7 @@ import { IconSearch } from '@tabler/icons-react';
 
 import {  AppShell,  Group, TextInput, rem,  Card, Image, Text, Stack } from '@mantine/core';
 import { useState } from 'react';
+import TextEditor from '../components/TextEditor';
 
 export default function MainPage() {
 
@@ -111,6 +112,7 @@ export default function MainPage() {
                         </Text>
                     </Card>
                 </Group>
+                <TextEditor/>
             </Stack>
         </AppShell.Main>
     );
