@@ -109,7 +109,7 @@ export default function MainPage() {
                         </Text>
                     </Card>
                 </Group>
-                <TextEditor/>
+
             </Stack>
         </AppShell.Main>
     );
