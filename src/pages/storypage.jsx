@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react';
 
 import TableSection from '../components/TableSection';
 import { useDisclosure } from '@mantine/hooks';
-import TextEditor from '../components/TextEditor';
 
 import { RichTextEditor, Link } from '@mantine/tiptap';
 import { useEditor } from '@tiptap/react';
