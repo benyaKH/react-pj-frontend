@@ -14,6 +14,7 @@ import EpisodePage from './pages/episodepage';
 import { useState } from 'react';
 import LoginPage from './pages/loginpage';
 import { googleLogout } from '@react-oauth/google';
+import ResultPage from './pages/resultpage';
 
 function App() {
   
@@ -153,6 +154,7 @@ function App() {
           <Route path='/Story/:id' element={<StoryPage isAdmin={false} />}></Route>
           <Route path='/Dashborad/Episode/:id' element={<EpisodePage isAdmin={true} />}></Route>
           <Route path='/Episode/:id' element={<EpisodePage isAdmin={false} />}></Route>
+          <Route path='/Search/:id' element={<ResultPage />}></Route>
         </Routes>
       </AppShell>
     </MantineProvider>
