@@ -293,7 +293,7 @@ export default function EpisodePage(props) {
                         />
 
                         <Group justify="flex-end" mt="md">
-                            <Button onClick={() => { handlers.close() }} color="#2CB5B5">Submit</Button>
+                            <Button onClick={() => { onSubmit;handlers.close(); }} color="#2CB5B5">Submit</Button>
                             <Button type="reset" variant="outline" color="#FF6666">Cancle</Button>
                         </Group>
                     </form> : popupstate == 'Delete Episode' ?
