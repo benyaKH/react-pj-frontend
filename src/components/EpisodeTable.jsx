@@ -115,7 +115,7 @@ export default function EpisodeTable(
             <Text>{episodes.description}</Text>
             <Button onClick={(e) => {
                                 e.preventDefault();
-                                window.location.href = episodes.Links;
+                                window.open(episodes.Links, "_blank", "noreferrer");
                             }}>{">>"}</Button>
         </Group>
 

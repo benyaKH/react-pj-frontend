@@ -94,7 +94,7 @@ export default function EpisodePage(props) {
         };
         fetch(urlEditEpisodes, requestOptions)
             .then(response => response.json())
-            .then(data => { console.log(data); setLoading(false); })
+            .then(data => { console.log(data); setLoading(false); handlers.close();})
             .catch(e => console.log(e));
     }
 
@@ -241,7 +241,7 @@ export default function EpisodePage(props) {
                         <Button color="#521125"
                             onClick={(e) => {
                                 e.preventDefault();
-                                window.location.href = Links;
+                                window.open(Links, "_blank", "noreferrer");
                             }}>Watch Episode</Button>
                     </Stack>
                 </Stack>}
@@ -293,7 +293,7 @@ export default function EpisodePage(props) {
                         />
 
                         <Group justify="flex-end" mt="md">
-                            <Button onClick={() => { onSubmit;handlers.close(); }} color="#2CB5B5">Submit</Button>
+                            <Button onClick={onSubmit } color="#2CB5B5">Submit</Button>
                             <Button type="reset" variant="outline" color="#FF6666">Cancle</Button>
                         </Group>
                     </form> : popupstate == 'Delete Episode' ?
