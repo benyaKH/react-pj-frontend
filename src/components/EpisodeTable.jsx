@@ -90,8 +90,8 @@ export default function EpisodeTable(
     };
 
     const onClick = () => {
-        if (selectedCustomer != null) {
-            window.location.href = urlherf(selectedCustomer['_id'])
+        if(selectedCustomer._id!= null){
+            window.location.href = urlherf(selectedCustomer._id)
         }
     };
 
@@ -126,7 +126,7 @@ export default function EpisodeTable(
 
         <DataTable value={episodes} removableSort paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}
             dataKey="_id" filters={filters} filterDisplay="row" showGridlines
-            selectionMode="single" selection={selectedCustomer} onSelectionChange={(e) => setSelectedCustomer(e.value)} onClick={onClick}
+            selectionMode="single" selection={selectedCustomer} onSelectionChange={(e) => {setSelectedCustomer(e.value);}} onClick={onClick}
             globalFilterFields={['number', 'episodetitle', 'description', 'tags']} header={header} emptyMessage="No episodes found.">
             <Column key='number' field='number' header='No.' sortable />
             <Column key='episodetitle' field='episodetitle'  header='Title' sortable />
