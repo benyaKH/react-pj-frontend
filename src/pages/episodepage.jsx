@@ -23,6 +23,7 @@ export default function EpisodePage(props) {
     const [RqTags, setRqTags] = useState([])
     const [NewRq, setNewRq] = useState([]);
     const [value, setValue] = useState([]);
+    const [image, setImage] = useState("")
 
     const [storyid, setStoryid] = useState('')
     const [storyname, setStoryname] = useState('')
@@ -76,6 +77,24 @@ export default function EpisodePage(props) {
         }
     }, [])
 
+    const urlStory = `${mainurl}/stories/${storyid}`
+
+    useEffect(() => {
+        setLoading(true)
+        const fetchData = async () => {
+
+            await fetch(urlStory, {
+                method: "GET"
+            })
+                .then(response => response.json())
+                .then(result => {
+                    setImage(result.image);
+                    setLoading(false)
+                })
+                .catch(e => console.log(e))
+        }
+        fetchData()
+    }, [])
 
     const onSubmit = () => {
         setLoading(true)
@@ -189,7 +208,9 @@ export default function EpisodePage(props) {
                     bg="var(--mantine-color-body)"
                 >
                     <Image
-                        src="https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
+                        src={image == "" || image == null ?
+                        "https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
+                        : image}
                         mah={300}
                         alt="No way!"
                     />
