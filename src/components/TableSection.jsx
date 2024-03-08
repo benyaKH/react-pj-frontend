@@ -1,7 +1,7 @@
 
 import '@mantine/core/styles.css';
 import { IconNewSection} from '@tabler/icons-react';
-import { ActionIcon, Anchor, Button, Group, Modal, Stack, TagsInput, Text, TextInput, rem, Loader } from '@mantine/core';
+import { ActionIcon, Anchor, Button, Group, Modal, Stack, TagsInput, Text, TextInput, rem, Loader,Center } from '@mantine/core';
 import { useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import * as XLSX from "xlsx";
