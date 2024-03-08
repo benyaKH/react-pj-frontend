@@ -1,7 +1,7 @@
 
 import '@mantine/core/styles.css';
-import { IconNewSection} from '@tabler/icons-react';
-import { ActionIcon, Anchor, Button, Group, Modal, Stack, TagsInput, Text, TextInput, rem, Loader,Center } from '@mantine/core';
+import { IconNewSection } from '@tabler/icons-react';
+import { ActionIcon, Anchor, Button, Group, Modal, Stack, TagsInput, Text, TextInput, rem, Loader, Center } from '@mantine/core';
 import { useState } from 'react';
 import { useDisclosure } from '@mantine/hooks';
 import * as XLSX from "xlsx";
@@ -102,14 +102,14 @@ export default function TableSection(props) {
 
     // const Rqtags =  [...new Set(array.map((item) => item.age))];
 
-    const downloadfile = () =>{
+    const downloadfile = () => {
         fetch("template.xlsx").then((response) => {
             response.blob().then((blob) => {
-             
+
                 // Creating new object of PDF file
                 const fileURL =
                     window.URL.createObjectURL(blob);
-                     
+
                 // Setting various property values
                 let alink = document.createElement("a");
                 alink.href = fileURL;
@@ -126,90 +126,92 @@ export default function TableSection(props) {
         <div>
             {loading ? <Center py="60"><Loader color="blue" size="xl" /> </Center> :
                 <div>
-                    <Group>
+                    <Group py="xl" justify='space-between'>
                         <Text size={rem(25)} fw={500}>
-                            Episode
+                            Episodes
                         </Text>
-
-                        <Modal opened={opened} onClose={() => handlers.close()} title={popupstate} centered>
-
-                            <div>
-                                <Group>
-                                    <Anchor onClick={() => setNewChoices(true)} underline="hover" color='black'>
-                                        one-by-one
-                                    </Anchor>
-                                    <Anchor onClick={() => setNewChoices(false)} underline="hover" color='black'>
-                                        files
-                                    </Anchor>
-                                </Group>
-                                {newChoices ?
-                                    <form onSubmit={onSubmitNew}>
-                                        <TextInput
-                                            withAsterisk
-                                            label="No."
-                                            placeholder="your episode no."
-                                            onChange={e => setNumber(e.target.value)}
-                                        />
-                                        <TextInput
-                                            withAsterisk
-                                            label="Title"
-                                            placeholder="your episode title"
-                                            onChange={e => setTitle(e.target.value)}
-                                        />
-                                        <TextInput
-                                            label="Description"
-                                            placeholder="your episode description"
-                                            onChange={e => setDes(e.target.value)}
-                                        />
-
-                                        <TagsInput
-                                            label="Tag"
-                                            placeholder="Enter tag"
-                                            clearable
-                                            onChange={setTags}
-                                        />
-                                        <TagsInput
-                                            label="Characters"
-                                            placeholder="Enter characters name"
-                                            clearable
-
-                                            onChange={setChars}
-                                        />
-                                        <TextInput
-                                            withAsterisk
-                                            label="Link"
-                                            placeholder="your episode link"
-                                            onChange={e => setLink(e.target.value)}
-                                        />
-
-                                        <Group justify="flex-end" mt="md">
-                                            <Button type="submit" onClick={() => handlers.close()} color="#2CB5B5">Submit</Button>
-                                            <Button type="reset" variant="outline" color="#FF6666">Cancle</Button>
-                                        </Group>
-                                    </form> :
-                                    <div>
-                                        <Stack py="lg">
-                                            <Button onClick={downloadfile}>Download Template</Button>
-                                            <input
-                                                type="file"
-                                                accept=".xlsx, .xls"
-                                                onChange={handleFileUpload}
-                                            />
-                                            <Group justify="flex-end" mt="md">
-                                                <Button type="submit" onClick={onSubmitNews} color="#2CB5B5">Submit</Button>
-                                            </Group>
-                                        </Stack>
-
-                                    </div>
-                                }
-                            </div>
-                        </Modal>
                         {/* add new episode */}
-                        {props.isAdmin ?
-                            <ActionIcon variant="subtle" color='black' aria-label="EditDes" onClick={() => { handlers.open(); setPopupState('New Episode'); }}>
-                                <IconNewSection style={{ width: '130%', height: '130%' }} stroke={1.5} />
-                            </ActionIcon> : <div></div>}
+                        {props.isAdmin &&
+                            <Button rightSection={<IconNewSection style={{ width: '130%', height: '130%' }} stroke={1.5} />}
+                            variant="light" color='black' aria-label="EditDes" onClick={() => { handlers.open(); setPopupState('New Episode'); }}>
+                                Create Episode
+                            </Button>
+                        }
                     </Group>
+
+                    <Modal opened={opened} onClose={() => handlers.close()} title={popupstate} centered>
+
+                        <div>
+                            <Group>
+                                <Anchor onClick={() => setNewChoices(true)} underline="hover" color='black'>
+                                    one-by-one
+                                </Anchor>
+                                <Anchor onClick={() => setNewChoices(false)} underline="hover" color='black'>
+                                    files
+                                </Anchor>
+                            </Group>
+                            {newChoices ?
+                                <form onSubmit={onSubmitNew}>
+                                    <TextInput
+                                        withAsterisk
+                                        label="No."
+                                        placeholder="your episode no."
+                                        onChange={e => setNumber(e.target.value)}
+                                    />
+                                    <TextInput
+                                        withAsterisk
+                                        label="Title"
+                                        placeholder="your episode title"
+                                        onChange={e => setTitle(e.target.value)}
+                                    />
+                                    <TextInput
+                                        label="Description"
+                                        placeholder="your episode description"
+                                        onChange={e => setDes(e.target.value)}
+                                    />
+
+                                    <TagsInput
+                                        label="Tag"
+                                        placeholder="Enter tag"
+                                        clearable
+                                        onChange={setTags}
+                                    />
+                                    <TagsInput
+                                        label="Characters"
+                                        placeholder="Enter characters name"
+                                        clearable
+
+                                        onChange={setChars}
+                                    />
+                                    <TextInput
+                                        withAsterisk
+                                        label="Link"
+                                        placeholder="your episode link"
+                                        onChange={e => setLink(e.target.value)}
+                                    />
+
+                                    <Group justify="flex-end" mt="md">
+                                        <Button type="submit" onClick={() => handlers.close()} color="#2CB5B5">Submit</Button>
+                                        <Button type="reset" variant="outline" color="#FF6666">Cancle</Button>
+                                    </Group>
+                                </form> :
+                                <div>
+                                    <Stack py="lg">
+                                        <Button onClick={downloadfile}>Download Template</Button>
+                                        <input
+                                            type="file"
+                                            accept=".xlsx, .xls"
+                                            onChange={handleFileUpload}
+                                        />
+                                        <Group justify="flex-end" mt="md">
+                                            <Button type="submit" onClick={onSubmitNews} color="#2CB5B5">Submit</Button>
+                                        </Group>
+                                    </Stack>
+
+                                </div>
+                            }
+                        </div>
+                    </Modal>
                     {/* Table */}
                     <EpisodeTable stid={props.stid} isAdmin={props.isAdmin} />
                 </div>}
