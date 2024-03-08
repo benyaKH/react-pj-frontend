@@ -129,7 +129,7 @@ const TitleTemplate = (episodes) => {
     return (
 
 
-        <DataTable value={episodes} removableSort paginator rows={5} rowsPerPageOptions={[10, 20,30 ,50]} tableStyle={{ minWidth: '50rem' }}
+        <DataTable sortField="number" sortOrder={-1} value={episodes} removableSort paginator rows={5} rowsPerPageOptions={[10, 20,30 ,50]} tableStyle={{ minWidth: '50rem' }}
             dataKey="_id" filters={filters} filterDisplay="row" showGridlines
             selectionMode="single" selection={selectedCustomer} onSelectionChange={(e) => { setSelectedCustomer(e.value); }} onClick={onClick}
             globalFilterFields={['number', 'episodetitle', 'description', 'tags']} header={header} emptyMessage="No episodes found.">
