@@ -90,7 +90,7 @@ export default function DashboardPage() {
 
     return (
         <AppShell.Main>
-            {loading ? <Loader color="blue" size="xl" /> :
+            {loading ? <Center py="60"><Loader color="blue" size="xl" /> </Center> :
                 <Stack
                     h={300}
                     bg="var(--mantine-color-body)"

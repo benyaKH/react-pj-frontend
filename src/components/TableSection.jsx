@@ -124,7 +124,7 @@ export default function TableSection(props) {
 
     return (
         <div>
-            {loading ? <Loader color="blue" size="xl" /> :
+            {loading ? <Center py="60"><Loader color="blue" size="xl" /> </Center> :
                 <div>
                     <Group>
                         <Text size={rem(25)} fw={500}>

@@ -133,7 +133,7 @@ export default function StoryPage(props) {
 
     return (
         <AppShell.Main>
-            {loading ? <Loader color="blue" size="xl" /> :
+            {loading ? <Center py="60"><Loader color="blue" size="xl" /> </Center> :
                 <Stack
                     bg="var(--mantine-color-body)"
                 >

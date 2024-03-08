@@ -1,7 +1,7 @@
 import '@mantine/core/styles.css';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { AppShell, Text, Stack, rem, Divider, SimpleGrid, Loader } from '@mantine/core';
+import { AppShell, Text, Stack, rem, Divider, SimpleGrid, Loader, Center } from '@mantine/core';
 import StoryCard from '../components/StoryCard';
 
 export default function CategoryPage() {
@@ -47,7 +47,7 @@ export default function CategoryPage() {
                 >
                     <Text size={rem(40)} fw={700}>{params.id}</Text>
                     <Divider my="md" />
-                    {loading ? <Loader color="blue" size="xl" /> :
+                    {loading ? <Center py="60"><Loader color="blue" size="xl" /> </Center>:
                         <SimpleGrid cols={4}>
                             {items}
                         </SimpleGrid>}
