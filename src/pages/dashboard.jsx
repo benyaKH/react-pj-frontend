@@ -4,7 +4,7 @@ import { IconCirclePlus } from '@tabler/icons-react';
 
 import { useDisclosure } from '@mantine/hooks';
 import { AppShell, Text, Stack, rem, Divider, Modal, Center, UnstyledButton, SimpleGrid, 
-    TextInput, Group, Button, NativeSelect, Loader, LoadingOverlay,Center } from '@mantine/core';
+    TextInput, Group, Button, NativeSelect, Loader, LoadingOverlay } from '@mantine/core';
 import StoryCardAdmin from '../components/StoryCardAdmin';
 
 export default function DashboardPage() {
