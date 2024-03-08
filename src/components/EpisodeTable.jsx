@@ -1,8 +1,8 @@
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import '@mantine/core/styles.css';
-import { Badge, Button, Group, TagsInput, Text } from '@mantine/core';
-import {  useEffect, useState } from 'react';
+import { Badge, Button, Group, TagsInput, Text,Stack } from '@mantine/core';
+import { useEffect, useState } from 'react';
 import { FilterMatchMode } from 'primereact/api';
 
 
@@ -90,7 +90,7 @@ export default function EpisodeTable(
     };
 
     const onClick = () => {
-        if(selectedCustomer._id!= null){
+        if (selectedCustomer._id != null) {
             window.location.href = urlherf(selectedCustomer._id)
         }
     };
@@ -111,14 +111,19 @@ export default function EpisodeTable(
     };
 
     const desTemplate = (episodes) => {
-        return <Group w={500}>
+        return <Stack w={500}>
             <Text>{episodes.description}</Text>
-            <Button onClick={(e) => {
-                                e.preventDefault();
-                                window.open(episodes.Links, "_blank", "noreferrer");
-                            }}>go to content</Button>
-        </Group>
+            <Group justify="flex-end">
+                <Button size="xs" onClick={(e) => {
+                    e.preventDefault();
+                    window.open(episodes.Links, "_blank", "noreferrer");
+                }}>go to content</Button>
+            </Group>
+        </Stack>
+        };
 
+const TitleTemplate = (episodes) => {
+    return <Group w={200}><Text>{episodes.episodetitle}</Text></Group>
     };
 
     return (
@@ -126,10 +131,10 @@ export default function EpisodeTable(
 
         <DataTable value={episodes} removableSort paginator rows={5} rowsPerPageOptions={[5, 10, 25, 50]} tableStyle={{ minWidth: '50rem' }}
             dataKey="_id" filters={filters} filterDisplay="row" showGridlines
-            selectionMode="single" selection={selectedCustomer} onSelectionChange={(e) => {setSelectedCustomer(e.value);}} onClick={onClick}
+            selectionMode="single" selection={selectedCustomer} onSelectionChange={(e) => { setSelectedCustomer(e.value); }} onClick={onClick}
             globalFilterFields={['number', 'episodetitle', 'description', 'tags']} header={header} emptyMessage="No episodes found.">
             <Column key='number' field='number' header='No.' sortable />
-            <Column key='episodetitle' field='episodetitle'  header='Title' sortable />
+            <Column key='episodetitle' field='episodetitle' body={TitleTemplate} header='Title' sortable />
             <Column key='description' field='description' body={desTemplate} header='Description' sortable />
             <Column key='tags' field='tags' header='Tags' body={tagBodyTemplate} sortable />
         </DataTable>
