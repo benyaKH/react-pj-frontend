@@ -263,7 +263,7 @@ export default function EpisodePage(props) {
                             onClick={(e) => {
                                 e.preventDefault();
                                 window.open(Links, "_blank", "noreferrer");
-                            }}>Watch Episode</Button>
+                            }}>go to content</Button>
                     </Stack>
                 </Stack>}
             <Modal opened={opened} onClose={() => { handlers.close() }} title={popupstate} centered>
