@@ -181,7 +181,7 @@ export default function StoryPage(props) {
                                 </Group>
 
                                 {props.isAdmin ?
-                                    <Switch checked={IsPublic} onChange={onPublic} label={"Public"} mt="md" /> : <div></div>}
+                                    <Switch checked={IsPublic} onChange={onPublic} label={"Publish"} mt="md" /> : <div></div>}
                             </Group>
 
                             <Text td="underline" color='gray'>
@@ -191,7 +191,7 @@ export default function StoryPage(props) {
 
                         <Grid columns={9}>
                             <Grid.Col span={8}> {IsEditDEs ?
-                                <RichTextEditor editor={editor} onChange={setDescription}>
+                                <RichTextEditor editor={editor} >
                                     <RichTextEditor.Toolbar sticky stickyOffset={60}>
                                         <RichTextEditor.ControlsGroup>
                                             <RichTextEditor.Bold />
