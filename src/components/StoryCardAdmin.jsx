@@ -27,7 +27,8 @@ export default function StoryCardAdmin(props) {
     return (
         <Indicator color="red"  label="!" size={20} disabled={!props.rq}>
         <div ref={ref}>
-            <StoryCard id={props.stid} category={props.category}title={props.title} description={props.description} Ep={props.Ep.length} image={props.image} isAdmin={true}></StoryCard>
+            <StoryCard id={props.stid} category={props.category}title={props.title} description={props.description} 
+            Ep={props.Ep.length} image={props.image} isAdmin={true} isPublish={props.isPublish}></StoryCard>
             <Modal opened={opened} onClose={handlers.close} title="Are you sure delete this question?" centered>
             <LoadingOverlay visible={loading} loaderProps={{ children: 'Loading...' }} />
                 <Text size='xs'>If you delete the question you can’t recover it.</Text>
