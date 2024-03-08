@@ -77,7 +77,7 @@ export default function EpisodePage(props) {
         }
     }, [])
 
-    const urlStory = `${mainurl}/stories/${storyid}`
+    const urlStory = `${mainurl}/stories/${params.stid}`
 
     useEffect(() => {
         setLoading(true)

@@ -26,8 +26,8 @@ export default function EpisodeTable(
 
     function urlherf(id) {
         if (props.isAdmin) {
-            return `/Dashborad/Episode/${id}`
-        } else return `/Episode/${id}`
+            return `/Dashborad/${props.stid}/${id}`
+        } else return `/${props.stid}/${id}`
     }
 
     function GeturlEp() {

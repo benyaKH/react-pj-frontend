@@ -152,8 +152,8 @@ function App() {
           <Route path='/Dashboard/:id' element={<StoryPage isAdmin={true} />}></Route>
           <Route path='/Category/:id' element={<CategoryPage />}></Route>
           <Route path='/Story/:id' element={<StoryPage isAdmin={false} />}></Route>
-          <Route path='/Dashborad/Episode/:id' element={<EpisodePage isAdmin={true} />}></Route>
-          <Route path='/Episode/:id' element={<EpisodePage isAdmin={false} />}></Route>
+          <Route path='/Dashborad/:stid/:id' element={<EpisodePage isAdmin={true} />}></Route>
+          <Route path='/:stid/:id' element={<EpisodePage isAdmin={false} />}></Route>
           <Route path='/Search/:id' element={<ResultPage />}></Route>
         </Routes>
       </AppShell>
