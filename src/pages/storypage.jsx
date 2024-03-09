@@ -1,6 +1,6 @@
 import '@mantine/core/styles.css';
 import { useParams } from 'react-router-dom';
-import { AppShell, Group, TextInput, rem, Text, Stack, Divider, ActionIcon, Button, Switch, AspectRatio, Container, Grid, BackgroundImage, Center, Modal, Loader } from '@mantine/core';
+import { AppShell, Group, TypographyStylesProvider,TextInput, rem, Text, Stack, Divider, ActionIcon, Button, Switch, AspectRatio, Container, Grid, BackgroundImage, Center, Modal, Loader } from '@mantine/core';
 
 import { IconEdit } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
@@ -70,7 +70,7 @@ export default function StoryPage(props) {
         ],
         content:description,
         onUpdate({ editor }) {
-            setDescription(editor?.getJSON().content[0].content[0].text);
+            setDescription(editor?.getHTML());
           }
     });
 
@@ -242,7 +242,13 @@ export default function StoryPage(props) {
 
                                     <RichTextEditor.Content />
                                 </RichTextEditor> :
-                                <div dangerouslySetInnerHTML={{ __html: description }} />
+                                <TypographyStylesProvider>
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html: description
+                                  }}
+                                />
+                              </TypographyStylesProvider>
                             }</Grid.Col>
                             <Grid.Col span={1}>
                                 {props.isAdmin ? IsEditDEs ?
