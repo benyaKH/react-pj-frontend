@@ -20,7 +20,7 @@ export default function StoryCardAdmin(props) {
         };
         fetch(urldelete, requestOptions)
             .then(response => response.json())
-            .then(data => {console.log(data); setLoading(false); handlers.close();})
+            .then(data => {console.log(data); setLoading(false); handlers.close();window.location.reload();})
             .catch(e => console.log(e))
 
     }
