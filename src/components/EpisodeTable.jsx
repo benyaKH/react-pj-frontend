@@ -79,7 +79,7 @@ export default function EpisodeTable(
                 <span className="p-input-icon-left">
                     <i className="pi pi-search" />
                     <TagsInput
-                        placeholder="Pick tag from list"
+                        placeholder="Search keyword"
                         maxDropdownHeight={200}
                         value={key}
                         onChange={setKey}
