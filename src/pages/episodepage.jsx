@@ -33,7 +33,10 @@ export default function EpisodePage(props) {
     const [tags, setTags] = useState([]);
     const [characters, setChars] = useState([]);
     const [Links, setLink] = useState('')
-    const [opened, handlers] = useDisclosure(false);
+    const [opened, handlers] = useDisclosure(false,{
+        onOpen: () => console.log('Opened'),
+        onClose: () => window.location.reload(),
+      });
 
 
     useEffect(() => {
@@ -315,7 +318,7 @@ export default function EpisodePage(props) {
 
                         <Group justify="flex-end" mt="md">
                             <Button onClick={onSubmit } color="#2CB5B5">Submit</Button>
-                            <Button type="reset" variant="outline" color="#FF6666">Cancle</Button>
+                            <Button onClick={handlers.close} variant="outline" color="#FF6666">Cancle</Button>
                         </Group>
                     </form> : popupstate == 'Delete Episode' ?
                         <Stack>

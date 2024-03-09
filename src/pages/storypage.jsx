@@ -22,7 +22,10 @@ export default function StoryPage(props) {
     const params = useParams()
     const [loading, setLoading] = useState(false)
     const [IsPublic, setIsPublic] = useState(false)
-    const [opened, handlers] = useDisclosure(false);
+    const [opened, handlers] = useDisclosure(false,{
+        onOpen: () => console.log('Opened'),
+        onClose: () => window.location.reload(),
+      });
 
     const mainurl = 'https://pj-backend.up.railway.app'
 
