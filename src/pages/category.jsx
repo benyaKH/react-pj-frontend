@@ -33,7 +33,7 @@ export default function CategoryPage() {
     const items = stories.map((item) => (
         <StoryCard id={item['_id']} title={item['storyname']}
             category={item['category']} description={item['description']}
-            Ep={item['episodeId']['length']} image={item['image']} isAdmin={false}></StoryCard>
+            Ep={item['episodesIn']['length']} image={item['image']} isAdmin={false}></StoryCard>
 
     ));
 
