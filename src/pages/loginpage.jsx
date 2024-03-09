@@ -1,6 +1,6 @@
 import '@mantine/core/styles.css';
 
-import { AppShell, Card, rem, Stack, Text, } from '@mantine/core';
+import { AppShell, Card, rem, Stack, Text, Button} from '@mantine/core';
 import { useGoogleLogin,googleLogout } from '@react-oauth/google';
 import { useState,useEffect } from 'react';
 import axios from 'axios';
@@ -69,7 +69,7 @@ export default function LoginPage() {
                             <button onClick={logOut}>Log out</button>
                         
                     ) : (
-                        <button onClick={login}>Sign in with Google 🚀 </button>
+                        <Button mx="30" mt="20" color="#521125" variant="outline" onClick={login}>Sign in with Google 🚀 </Button>
                     )}
 
                     {/* {name ?
