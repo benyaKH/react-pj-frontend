@@ -78,7 +78,7 @@ export default function DashboardPage() {
 
         <StoryCardAdmin stid={item['_id']} title={item['storyname']}
             category={item['category']} description={item['description']}
-            Ep={item['episodeId']} image={item['image']} isPublish={item['IsPublic']}
+            Ep={item['episodesIn']} image={item['image']} isPublish={item['IsPublic']}
             rq={RqEp.find((element) => element == item['_id']) != undefined}></StoryCardAdmin>
 
     ));
