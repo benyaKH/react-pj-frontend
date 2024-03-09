@@ -116,7 +116,7 @@ export default function DashboardPage() {
                                 />
                                 <NativeSelect
                                     label="Category"
-                                    data={['Anime', 'TV Series', 'Online Program', 'Podcast']}
+                                    data={['Anime', 'TV Series', 'Online Program', 'Podcast','Others']}
                                     onChange={e => setCategory(e.target.value)}
                                 />
 

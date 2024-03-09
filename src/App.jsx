@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import { IconUserCircle, IconCategory2 } from '@tabler/icons-react';
 
 import { useDisclosure } from '@mantine/hooks';
-import { MantineProvider, AppShell, Burger, Group, rem, UnstyledButton, Menu, Anchor } from '@mantine/core';
+import { MantineProvider, AppShell, Group, rem, UnstyledButton, Menu, Anchor } from '@mantine/core';
 import MainPage from './pages/main';
 import DashboardPage from './pages/dashboard';
 import StoryPage from './pages/storypage';
@@ -17,7 +17,7 @@ import { googleLogout } from '@react-oauth/google';
 import ResultPage from './pages/resultpage';
 
 function App() {
-  
+
   const Categoryicon = <IconCategory2 style={{ width: rem(25), height: rem(25) }} />;
   const Usericon = <IconUserCircle style={{ width: rem(25), height: rem(25) }} />;
 
@@ -31,7 +31,7 @@ function App() {
     googleLogout();
     localStorage.removeItem("username")
     window.location.replace(`/`)
-};
+  };
 
   return (
     <MantineProvider
@@ -88,6 +88,9 @@ function App() {
                   </Menu.Item>
                   <Menu.Item component="a" href={`/Category/Podcast`} color='white'>
                     Podcast
+                  </Menu.Item>
+                  <Menu.Item component="a" href={`/Category/Others`} color='white'>
+                    Others
                   </Menu.Item>
                 </Menu.Dropdown>
               </Menu>
