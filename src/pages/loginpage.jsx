@@ -71,30 +71,6 @@ export default function LoginPage() {
                     ) : (
                         <Button mx="30" mt="20" color="#521125" variant="outline" onClick={login}>Sign in with Google 🚀 </Button>
                     )}
-
-                    {/* {name ?
-                        <Box py={rem(80)}>
-                            <GoogleLogout
-                                clientId={clientId}
-                                buttonText='Log out'
-                                onLogoutSuccess={onLogout}
-                            />
-                        </Box> :
-                        <Box py={rem(50)}>
-                            <GoogleLogin
-                                render={renderProps => (
-                                    <Button justify="center" fullWidth leftSection={icon} mt="md" variant="outline" color="#521125" onClick={renderProps.onClick}>
-                                        Sign in with Google
-                                    </Button>
-
-                                )}
-                                clientId={clientId}
-                                buttonText='Sign in with Google'
-                                onSuccess={onSuccess}
-                                onFailure={onFailure}
-                                cookiePolicy='single_host_origin'
-                                isSignedIn={true} />
-                        </Box>} */}
                 </Card>
 
             </Stack>
