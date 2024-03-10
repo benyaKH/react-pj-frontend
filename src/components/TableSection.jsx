@@ -130,6 +130,15 @@ export default function TableSection(props) {
         document.body.removeChild(link);
     }
 
+    const isValidUrl = urlString => {
+        var urlPattern = new RegExp('^(https?:\\/\\/)?' + // validate protocol
+            '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // validate domain name
+            '((\\d{1,3}\\.){3}\\d{1,3}))' + // validate OR ip (v4) address
+            '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' + // validate port and path
+            '(\\?[;&a-z\\d%_.~+=-]*)?' + // validate query string
+            '(\\#[-a-z\\d_]*)?$', 'i'); // validate fragment locator
+        return !!urlPattern.test(urlString);
+    }
 
 
 
@@ -164,12 +173,14 @@ export default function TableSection(props) {
                             {newChoices ?
                                 <form onSubmit={onSubmitNew}>
                                     <TextInput
+                                        error={number == '' ? "your must enter this field" : null}
                                         withAsterisk
                                         label="No."
                                         placeholder="your episode no."
                                         onChange={e => setNumber(e.target.value)}
                                     />
                                     <TextInput
+                                        error={episodetitle == '' ? "your must enter this field" : null}
                                         withAsterisk
                                         label="Title"
                                         placeholder="your episode title"
@@ -195,6 +206,7 @@ export default function TableSection(props) {
                                         onChange={setChars}
                                     />
                                     <TextInput
+                                        error={!isValidUrl(Links) ? "Invalid link" : null}
                                         withAsterisk
                                         label="Link"
                                         placeholder="your episode link"
@@ -202,7 +214,9 @@ export default function TableSection(props) {
                                     />
 
                                     <Group justify="flex-end" mt="md">
-                                        <Button type="submit" onClick={() => handlers.close()} color="#2CB5B5">Submit</Button>
+                                        <Button 
+                                        disabled={number == ''||episodetitle == ''||!isValidUrl(Links)}
+                                        type="submit" onClick={() => handlers.close()} color="#2CB5B5">Submit</Button>
                                         <Button type="reset" variant="outline" color="#FF6666">Cancle</Button>
                                     </Group>
                                 </form> :

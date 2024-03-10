@@ -3,8 +3,10 @@ import { useState, useEffect } from 'react';
 import { IconCirclePlus } from '@tabler/icons-react';
 
 import { useDisclosure } from '@mantine/hooks';
-import { AppShell, Text, Stack, rem, Divider, Modal, Center, UnstyledButton, SimpleGrid, 
-    TextInput, Group, Button, NativeSelect, Loader, LoadingOverlay } from '@mantine/core';
+import {
+    AppShell, Text, Stack, rem, Divider, Modal, Center, UnstyledButton, SimpleGrid,
+    TextInput, Group, Button, NativeSelect, Loader, LoadingOverlay
+} from '@mantine/core';
 import StoryCardAdmin from '../components/StoryCardAdmin';
 
 export default function DashboardPage() {
@@ -35,7 +37,7 @@ export default function DashboardPage() {
                 method: "GET"
             })
                 .then(response => response.json())
-                .then(result => {setStories(result); setLoading(false); })
+                .then(result => { setStories(result); setLoading(false); })
                 .catch(e => console.log(e))
         }
         fetchData()
@@ -69,7 +71,7 @@ export default function DashboardPage() {
         };
         fetch(urlNewStory, requestOptions)
             .then(response => response.json())
-            .then(data => { console.log(data);  setLoading(false); handlers.close();}).then(() => window.location.reload())
+            .then(data => { console.log(data); setLoading(false); handlers.close(); }).then(() => window.location.reload())
             .catch(e => console.log(e))
     }
 
@@ -109,6 +111,7 @@ export default function DashboardPage() {
                             <LoadingOverlay visible={loading} loaderProps={{ children: 'Loading...' }} />
                             <form onSubmit={onSubmit}>
                                 <TextInput
+                                    error={storyname.length <2?"your title is too short": null}
                                     withAsterisk
                                     label="Board title"
                                     placeholder="your board title"
@@ -116,12 +119,12 @@ export default function DashboardPage() {
                                 />
                                 <NativeSelect
                                     label="Category"
-                                    data={['Anime', 'TV Series', 'Online Program', 'Podcast','Others']}
+                                    data={['Anime', 'TV Series', 'Online Program', 'Podcast', 'Others']}
                                     onChange={e => setCategory(e.target.value)}
                                 />
 
                                 <Group justify="flex-end" mt="md">
-                                    <Button type="submit" color="#2CB5B5">Submit</Button>
+                                    <Button type="submit" color="#2CB5B5" disabled={storyname.length <2}>Submit</Button>
                                     <Button type="reset" variant="outline" onClick={() => setStoryname('')} color="#FF6666">Cancle</Button>
                                 </Group>
                             </form>
