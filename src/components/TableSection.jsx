@@ -101,19 +101,6 @@ export default function TableSection(props) {
 
     }
 
-    function convertToBase64(e) {
-        var reader = new FileReader();
-        reader.readAsDataURL(e.target.files[0]);
-        reader.onload = () => {
-            if (typeof (reader.result) == 'string') {
-                setImage(reader.result)
-            }
-        };
-        reader.onerror = error => {
-            console.log("Error:", error)
-        }
-    }
-
     // const Rqtags =  [...new Set(array.map((item) => item.age))];
 
     const downloadfile = () => {
