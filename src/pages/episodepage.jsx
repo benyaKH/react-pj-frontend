@@ -33,10 +33,7 @@ export default function EpisodePage(props) {
     const [tags, setTags] = useState([]);
     const [characters, setChars] = useState([]);
     const [Links, setLink] = useState('')
-    const [opened, handlers] = useDisclosure(false,{
-        onOpen: () => console.log('Opened'),
-        onClose: () => window.location.reload(),
-      });
+    const [opened, handlers] = useDisclosure(false);
 
 
     useEffect(() => {
@@ -269,7 +266,7 @@ export default function EpisodePage(props) {
                             }}>go to content</Button>
                     </Stack>
                 </Stack>}
-            <Modal opened={opened} onClose={() => { handlers.close() }} title={popupstate} centered>
+            <Modal opened={opened} onClose={() => { window.location.reload();handlers.close() }} title={popupstate} centered>
                 <LoadingOverlay visible={loading} zIndex={1000} overlayProps={{ radius: "sm", blur: 2 }} />
                 {popupstate == 'Edit Episode' ?
                     <form onSubmit={onSubmit}>
