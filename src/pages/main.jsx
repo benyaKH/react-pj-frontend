@@ -1,12 +1,29 @@
 import '@mantine/core/styles.css';
 
 import { IconSearch } from '@tabler/icons-react';
-import {  AppShell,  Group, TextInput, rem,  Card, Image, Text, Stack } from '@mantine/core';
-import { useState } from 'react';
+import {  AppShell,  Group, TextInput, rem, Stack } from '@mantine/core';
+import { useState, useEffect } from 'react';
+import StoryCard from '../components/StoryCard';
 
 export default function MainPage() {
 
     const [value, setValue] = useState('');
+    const [stories, setStories] = useState([])
+
+    const urlCategory = `https://pj-backend.up.railway.app/stories/random`
+
+    useEffect(() => {
+        const fetchData = async () => {
+
+            await fetch(urlCategory, {
+                method: "GET"
+            })
+                .then(response => response.json())
+                .then(result => { setStories(result); })
+                .catch(e => console.log(e))
+        }
+        fetchData()
+    }, [])
 
     const Searchicon = <IconSearch style={{ width: rem(16), height: rem(16) }} />;
 
@@ -15,6 +32,11 @@ export default function MainPage() {
             window.location.href = `/Search/${value}`
         }
       }
+
+      const items = stories.map((item) => (
+        <StoryCard id={item['_id']} title={item['storyname']}
+            category={item['category']} description={item['description']}
+            Ep={item['episodesIn']['length']} image={item['image']} isAdmin={false}></StoryCard>))
 
     return (
         <AppShell.Main>
@@ -36,78 +58,7 @@ export default function MainPage() {
                     
                 />
                 <Group justify="space-between" grow>
-                    <Card
-                        shadow="sm"
-                        padding="xl"
-                        component="a"
-                        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                        target="_blank"
-                        bg="#521125"
-                    >
-                        <Card.Section>
-                            <Image
-                                src="https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
-                                h={160}
-                                alt="No way!"
-                            />
-                        </Card.Section>
-
-                        <Text fw={500} size="lg" mt="md" color='white'>
-                            You&apos;ve won a million dollars in cash!
-                        </Text>
-
-                        <Text mt="xs" size="sm" color='white'>
-                            Please click anywhere on this card to claim your reward, this is not a fraud, trust us
-                        </Text>
-                    </Card>
-                    <Card
-                        shadow="sm"
-                        padding="xl"
-                        component="a"
-                        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                        target="_blank"
-                        bg="#521125"
-                    >
-                        <Card.Section>
-                            <Image
-                                src="https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
-                                h={160}
-                                alt="No way!"
-                            />
-                        </Card.Section>
-
-                        <Text fw={500} size="lg" mt="md" color='white'>
-                            You&apos;ve won a million dollars in cash!
-                        </Text>
-
-                        <Text mt="xs" size="sm" color='white'>
-                            Please click anywhere on this card to claim your reward, this is not a fraud, trust us
-                        </Text>
-                    </Card>
-                    <Card
-                        shadow="sm"
-                        padding="xl"
-                        component="a"
-                        href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                        target="_blank"
-                        bg="#521125"
-                    >
-                        <Card.Section>
-                            <Image
-                                src="https://images.unsplash.com/photo-1579227114347-15d08fc37cae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80"
-                                h={160}
-                                alt="No way!"
-                            />
-                        </Card.Section>
-
-                        <Text fw={500} size="lg" mt="md" color='white'>
-                            You&apos;ve won a million dollars in cash!
-                        </Text>
-
-                        <Text mt="xs" size="sm" color='white'>
-                            Please click anywhere on this card to claim your reward, this is not a fraud, trust us
-                        </Text>
-                    </Card>
+                    {items}
                 </Group>
 
             </Stack>
