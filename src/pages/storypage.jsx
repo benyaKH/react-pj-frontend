@@ -51,13 +51,12 @@ export default function StoryPage(props) {
                 .then(result => {
                     setStoryname(result.storyname); setDescription(result.description);
                     setCategory(result.category); setIsPublic(result.IsPublic); setImage(result.image);
-                    setLoading(false)
+                    setLoading(false);
                 })
                 .catch(e => console.log(e))
         }
         fetchData()
     }, [])
-
     const editor = useEditor({
         extensions: [
             StarterKit,
