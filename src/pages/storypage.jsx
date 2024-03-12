@@ -57,6 +57,8 @@ export default function StoryPage(props) {
         }
         fetchData()
     }, [])
+
+    const content = description
     const editor = useEditor({
         extensions: [
             StarterKit,
@@ -67,7 +69,7 @@ export default function StoryPage(props) {
             Highlight,
             TextAlign.configure({ types: ['heading', 'paragraph'] }),
         ],
-        content:description,
+        content,
         onUpdate({ editor }) {
             setDescription(editor?.getHTML());
           }
