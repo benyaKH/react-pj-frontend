@@ -37,6 +37,7 @@ export default function StoryPage(props) {
     const [category, setCategory] = useState('')
     const [IsEditName, setIsEditName] = useState(false)
     const [IsEditDEs, setIsEditDes] = useState(false)
+    const [content, setContent] = useState('')
 
     const [image, setImage] = useState("")
 
@@ -51,14 +52,13 @@ export default function StoryPage(props) {
                 .then(result => {
                     setStoryname(result.storyname); setDescription(result.description);
                     setCategory(result.category); setIsPublic(result.IsPublic); setImage(result.image);
-                    setLoading(false);
-                })
+                    setLoading(false); setContent(result.description); 
+                }).then(console.log(content))
                 .catch(e => console.log(e))
         }
         fetchData()
     }, [])
 
-    const content = description
     const editor = useEditor({
         extensions: [
             StarterKit,
@@ -99,7 +99,7 @@ export default function StoryPage(props) {
         };
         fetch(urleditStory, requestOptions)
             .then(response => response.json())
-            .then(data => console.log(data));
+            .then(data => {console.log(data);});
         setIsEditName(false)
         setIsEditDes(false)
     }
